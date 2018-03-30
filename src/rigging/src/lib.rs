@@ -1,5 +1,3 @@
-#![feature(associated_consts)]
-
 extern crate anymap;
 extern crate backtrace;
 extern crate futures;

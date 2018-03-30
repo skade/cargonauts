@@ -1,5 +1,3 @@
-#![feature(associated_consts)]
-
 pub extern crate futures;
 extern crate c3po;
 extern crate mainsail;

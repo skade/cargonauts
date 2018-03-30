@@ -5,7 +5,7 @@ use std::rc::Rc;
 use std::time::Duration;
 
 use core::reactor::{Handle, Timeout};
-use futures::{future, Future};
+use futures::future;
 use recognizer::{Match, Router};
 use tokio::{Service, NewService};
 
@@ -109,7 +109,7 @@ impl RouteBuilder {
 pub type Handler = Box<Service<Request = endpoint::Request, Response = http::Response, Error = http::Error, Future = http::BoxFuture>>;
 
 pub fn not_found() -> http::BoxFuture {
-    future::ok(http::Response::new().with_status(http::StatusCode::NotFound)).boxed()
+    Box::new(future::ok(http::Response::new().with_status(http::StatusCode::NotFound)))
 }
 
 pub fn resource_path(endpoint: &'static str) -> String {
